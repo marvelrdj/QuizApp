@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/qustions.dart';
 import 'package:quiz_app/first_screen.dart';
 import 'package:quiz_app/qustion.dart';
+import 'package:quiz_app/result_screen.dart';
 
 class Quiz extends StatefulWidget {
   Quiz({super.key});
@@ -14,6 +16,8 @@ class _QuizState extends State<Quiz> {
   //initstate will run after the object created _QuizState
   //we add ? to activestate can be null
 
+  List<String> selectedAnswer = [];
+
   var activeScreen =
       'start_screen'; //this will reducwe the code and not need the initstate
 
@@ -24,13 +28,26 @@ class _QuizState extends State<Quiz> {
     }); //this will run when action needed to be changed
   }
 
+  void chooseAnswer(String answer) {
+    selectedAnswer.add(answer);
+    if (selectedAnswer.length == questions.length) {
+      setState(() {
+        //selectedAnswer = [];
+        activeScreen = 'result_screen';
+      });
+    }
+  }
+
   @override
   Widget build(context) {
     Widget screenWidget = FirstScreen(switchScreen);
     if (activeScreen == 'Qustion_screen') {
-      screenWidget = QustionScreen();
+      screenWidget = QustionScreen(onSelectAnswer: chooseAnswer);
     }
 
+    if (activeScreen == 'result_screen') {
+      screenWidget = resultScreen(chosenAnswer: selectedAnswer);
+    }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

@@ -2,6 +2,7 @@ import 'package:quiz_app/models/quiz_qustion.dart';
 
 List<dynamic> questions = [
   QuizQuestion(
+    //this is the class construter function
     'What are the main building blocks of Flutter UIs?',
     [
       'Widgets',

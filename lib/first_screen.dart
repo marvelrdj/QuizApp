@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FirstScreen extends StatelessWidget {
   FirstScreen(this.startQuiz, {super.key});
@@ -8,7 +9,7 @@ class FirstScreen extends StatelessWidget {
   Widget build(context) {
     return Center(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Opacity(
             opacity: 1.0, //this used to reduce transprant by wrapping
@@ -18,15 +19,16 @@ class FirstScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          const Text(
+          Text(
             'HI EVERY ONE I AM UZUMAKI NARUTO',
-            style: TextStyle(
+            textAlign: TextAlign.center,
+            style: GoogleFonts.lato(
               color: Color.fromARGB(255, 244, 191, 239),
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
-        const SizedBox(
+          const SizedBox(
             height: 20,
           ),
           const Text(
@@ -42,16 +44,20 @@ class FirstScreen extends StatelessWidget {
               startQuiz();
             },
             style: OutlinedButton.styleFrom(
-                foregroundColor: Color.fromARGB(255, 247, 1, 1),
-                backgroundColor: Color.fromARGB(125, 193, 193, 193)),
+              foregroundColor: const Color.fromARGB(255, 96, 1, 120),
+              backgroundColor: const Color.fromARGB(125, 193, 193, 193),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40),
+              ),
+            ),
             icon: Icon(
               Icons.arrow_right_alt,
-              color: Color.fromARGB(255, 247, 1, 1),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             label: Text(
               'Start Quiz',
               style: TextStyle(
-                color: Color.fromARGB(255, 245, 253, 4),
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
             ),
           )
